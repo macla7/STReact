@@ -71,6 +71,7 @@
 
 .features-container {
   margin-top: 12px;
+  padding-bottom: 48px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
