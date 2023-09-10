@@ -10,6 +10,10 @@ import ContactUs from "./features/ContactUs";
 import LandingPage from "./features/LandingPage";
 import PrivacyPolicyPage from "./features/PrivacyPolicyPage";
 import HowToPage from "./features/HowToPage";
+import PostPage from "./features/posts/PostPage";
+import store from "./app/store";
+import { Provider } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +37,10 @@ const router = createBrowserRouter([
         path: "how_to",
         element: <HowToPage />,
       },
+      {
+        path: "post/:id",
+        element: <PostPage />,
+      },
     ],
   },
   {},
@@ -40,9 +48,13 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <HelmetProvider>
+    <Provider store={store}>
+      <React.StrictMode>
+        <RouterProvider router={router} />
+      </React.StrictMode>
+    </Provider>
+  </HelmetProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
